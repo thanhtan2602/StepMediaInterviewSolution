@@ -25,8 +25,8 @@ namespace StepMedia.BackendService
                         select new { p };
 
             var model = await query
-                .Skip((pageIndex) * pageSize)
-                .Take(pageSize)
+                //.Skip((pageIndex) * pageSize)
+                //.Take(pageSize)
                 .OrderBy(x => x.p.FullName)
                 .Select(x => new TeacherViewModel()
                 {
@@ -46,21 +46,23 @@ namespace StepMedia.BackendService
                 FullName = teacher.FullName,
             };
 
-            _dbContext.Teachers.Add(newTeacher);
-
-            // Create students
-            foreach (var studentViewModel in teacher.Students)
+            var students = new List<Student>();
+            if (teacher.Students != null && teacher.Students.Count > 0)
             {
-                var student = new Student
+                foreach (var studentViewModel in teacher.Students)
                 {
-                    FullName = studentViewModel.FullName,
-                    DOB = studentViewModel.DateOfBirth,
-                    Teacher = newTeacher
-                };
-
-                _dbContext.Students.Add(student);
+                    students.Add(new Student
+                    {
+                        FullName = studentViewModel.FullName,
+                        DOB = studentViewModel.DateOfBirth,
+                        Teacher = newTeacher
+                    });
+                }
             }
 
+            newTeacher.Students = students;
+
+            _dbContext.Teachers.Add(newTeacher);
             await _dbContext.SaveChangesAsync();
 
             return newTeacher.Id;
@@ -80,35 +82,38 @@ namespace StepMedia.BackendService
             }
 
             //Update students of teacher
-            foreach (var item in teacher.Students)
+            if(teacher.Students != null && teacher.Students.Count > 0)
             {
-                //Update
-                if (item.StudentId > 0)
+                foreach (var item in teacher.Students)
                 {
-                    //Check exist
-                    var existStudent = await _dbContext.Students.FindAsync(item.StudentId);
-                    if (existStudent == null)
-                        continue;
-                    else
+                    //Update
+                    if (item.StudentId > 0)
                     {
-                        existStudent.FullName = item.FullName;
-                        existStudent.DOB = item.DateOfBirth;
+                        //Check exist
+                        var existStudent = await _dbContext.Students.FindAsync(item.StudentId);
+                        if (existStudent == null)
+                            continue;
+                        else
+                        {
+                            existStudent.FullName = item.FullName;
+                            existStudent.DOB = item.DateOfBirth;
 
-                        _dbContext.Students.Update(existStudent);
+                            _dbContext.Students.Update(existStudent);
+                        }
                     }
-                }
-                else //Creat
-                {
-                    var newStudent = new Student
+                    else //Creat
                     {
-                        FullName = item.FullName,
-                        DOB = item.DateOfBirth,
-                        Teacher = existTeacher
-                    };
+                        var newStudent = new Student
+                        {
+                            FullName = item.FullName,
+                            DOB = item.DateOfBirth,
+                            Teacher = existTeacher
+                        };
 
-                    _dbContext.Students.Add(newStudent);
+                        _dbContext.Students.Add(newStudent);
+                    }
+
                 }
-
             }
 
             await _dbContext.SaveChangesAsync();
