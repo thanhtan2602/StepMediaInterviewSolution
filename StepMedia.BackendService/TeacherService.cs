@@ -21,21 +21,29 @@ namespace StepMedia.BackendService
         }
         public async Task<List<TeacherViewModel>> GetTeacherList(int pageIndex = 0, int pageSize = 5)
         {
-            var query = from p in _dbContext.Teachers
-                        select new { p };
-
-            var model = await query
-                //.Skip((pageIndex) * pageSize)
-                //.Take(pageSize)
-                .OrderBy(x => x.p.FullName)
+            var data = await _dbContext.Teachers
+                .OrderBy(x => x.FullName)
+                .Skip((pageIndex) * pageSize)
+                .Take(pageSize)
                 .Select(x => new TeacherViewModel()
                 {
-                    TeacherId = x.p.Id,
-                    FullName = x.p.FullName,
-                    Students = x.p.Students.OrderBy(x => x.DOB).ToList().ToListModel()
+                    TeacherId = x.Id,
+                    FullName = x.FullName,
+                    Students = x.Students.OrderBy(x => x.DOB).ToList().ToListModel()
                 }).ToListAsync();
 
-            return model;
+            //var model = await query
+            //    .Skip((pageIndex) * pageSize)
+            //    .Take(pageSize)
+            //    .OrderBy(x => x.p.FullName)
+            //    .Select(x => new TeacherViewModel()
+            //    {
+            //        TeacherId = x.p.Id,
+            //        FullName = x.p.FullName,
+            //        Students = x.p.Students.OrderBy(x => x.DOB).ToList().ToListModel()
+            //    }).ToListAsync();
+
+            return data;
         }
 
         public async Task<int> InsertTeacher(TeacherViewModel teacher)
@@ -82,7 +90,7 @@ namespace StepMedia.BackendService
             }
 
             //Update students of teacher
-            if(teacher.Students != null && teacher.Students.Count > 0)
+            if (teacher.Students != null && teacher.Students.Count > 0)
             {
                 foreach (var item in teacher.Students)
                 {

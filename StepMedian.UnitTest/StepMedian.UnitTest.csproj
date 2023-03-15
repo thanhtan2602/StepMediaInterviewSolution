@@ -74,7 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\TeacherService_GetTeacherList.cs" />
+    <Compile Include="Services\UnitTest_TeacherService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

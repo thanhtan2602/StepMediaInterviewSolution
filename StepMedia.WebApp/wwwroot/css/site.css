@@ -190,13 +190,13 @@ button {
     border: 0;
     padding: 5px 10px;
     min-width: 110px;
+    max-height: 40px;
 }
 
     button.btn-submit {
         background: #6e00ffa3;
         color: #fff;
         width: 100px;
-        margin-left: 10px;
     }
 
 .student-row {
@@ -250,4 +250,14 @@ body {
 .message {
     max-width: 220px;
     display: flex;
+}
+
+
+#teacher-form {
+    display: flex;
+}
+
+#actions {
+    min-width: 225px;
+    display: inline-block;
 }

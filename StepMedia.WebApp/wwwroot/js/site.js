@@ -20,7 +20,7 @@ $(document).ready(function () {
         var newTeacherForm = $(".form-template").first().clone();
         newTeacherForm.removeClass('form-template');
         newTeacherForm.attr('style', 'display: block');
-        newTeacherForm.insertBefore("#add-teacher-button");
+        newTeacherForm.insertBefore("#actions");
     });
 
     $("#teacher-form").submit(function (event) {
@@ -65,19 +65,23 @@ $(document).ready(function () {
         $.when.apply($, summitArray).done(function () {
             $('.success').text('Update success!');
             $('.success').show();
-            //location.reload(true);
+            setTimeout(function () {
+                window.location.reload(1);
+            }, 3000)
         });
+
+
     });
 });
 
 //Function check enter at least 2 teachers and 30 students
 function checkEnterConut() {
-    //if ($('#teacher-form .form-detail').length < 2) {
-    //    return 'Please enter at least 2 teachers.';
-    //}
-    //if ($('#teacher-form .student-row').length < 30) {
-    //    return 'Please enter at least 30 students.';
-    //}
+    if ($('#teacher-form .form-detail').length < 2) {
+        return 'Please enter at least 2 teachers.';
+    }
+    if ($('#teacher-form .student-row').length < 30) {
+        return 'Please enter at least 30 students.';
+    }
 }
 
 
