@@ -22,6 +22,7 @@ namespace StepMedia.BackendService
         public async Task<List<TeacherViewModel>> GetTeacherList(int pageIndex = 0, int pageSize = 5)
         {
             var data = await _dbContext.Teachers
+                .AsNoTracking()
                 .OrderBy(x => x.FullName)
                 .Skip((pageIndex) * pageSize)
                 .Take(pageSize)
@@ -31,17 +32,6 @@ namespace StepMedia.BackendService
                     FullName = x.FullName,
                     Students = x.Students.OrderBy(x => x.DOB).ToList().ToListModel()
                 }).ToListAsync();
-
-            //var model = await query
-            //    .Skip((pageIndex) * pageSize)
-            //    .Take(pageSize)
-            //    .OrderBy(x => x.p.FullName)
-            //    .Select(x => new TeacherViewModel()
-            //    {
-            //        TeacherId = x.p.Id,
-            //        FullName = x.p.FullName,
-            //        Students = x.p.Students.OrderBy(x => x.DOB).ToList().ToListModel()
-            //    }).ToListAsync();
 
             return data;
         }

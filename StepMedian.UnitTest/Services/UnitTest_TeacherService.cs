@@ -1,20 +1,20 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
-namespace StepMedian.UnitTest.Services
+namespace StepMedia.UnitTest.Services
 {
     [TestClass]
     public class UnitTest_TeacherService
     {
-        private readonly ITeacherService _teacherSvc;
+        private TeacherService _teacherSvc;
 
-        public UnitTest_TeacherService(ITeacherService teacherSvc)
+        public UnitTest_TeacherService()
         {
-            _teacherSvc = teacherSvc;
+            _teacherSvc = new TeacherService();
         }
 
         [TestMethod]
-        public void UnitTest_TeacherService_InsertTeacher()
+        public void InsertData_ShouldCallInsertMethod()
         {
             // Arrange
             var students = new List<StudentViewModel>
@@ -33,7 +33,7 @@ namespace StepMedian.UnitTest.Services
             var data = new TeacherViewModel { FullName = "John", Students = students };
 
             // Act
-            _teacherSvc.InsertTeacher(data);
+            insertService.InsertData(data);
 
             // Assert
             mockDatabase.Verify(db => db.Insert(data), Times.Once);

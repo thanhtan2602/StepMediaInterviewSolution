@@ -26,8 +26,11 @@ $(document).ready(function () {
     $("#teacher-form").submit(function (event) {
         event.preventDefault();
 
+        //resetMessage
+        resetMessage();
+
         //check fill in all fields
-        if (isFormEmpty(this)) {
+        if (isHasEmptyInput()) {
             $('.error').text('Please fill in all fields!');
             $('.error').show();
             return false;
@@ -79,20 +82,25 @@ function checkEnterConut() {
     if ($('#teacher-form .form-detail').length < 2) {
         return 'Please enter at least 2 teachers.';
     }
-    if ($('#teacher-form .student-row').length < 30) {
+    if ($('#teacher-form .student-row').length < 3) {
         return 'Please enter at least 30 students.';
     }
 }
 
+//Function to hide all message
+function resetMessage() {
+    $(".message div").each(function (index) {
+        $(this).hide();
+    });
+}
+
 
 //Function check fill in all fields
-function isFormEmpty(form) {
-    var isEmpty = true;
-    $(form).find(':input').each(function () {
-        if ($(this).val()) {
-            isEmpty = false;
-            return false;
+function isHasEmptyInput() {
+    $('#teacher-form').find('input').each(function () {
+        if ($(this).val() == '') {
+            return true;
         }
     });
-    return isEmpty;
+    return false;
 }
