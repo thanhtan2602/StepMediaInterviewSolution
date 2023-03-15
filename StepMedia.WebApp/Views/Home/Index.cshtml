@@ -1,0 +1,88 @@
+﻿@model List<StepMedia.Model.ViewModels.TeacherViewModel>
+
+
+<div style="display:none" class="form-detail form-template">
+    <fieldset>
+        <legend>Teacher Info:</legend>
+        <div id="teacher-container">
+            <label for="FullName">Full Name</label>
+            <input class="teacher-fullname" type="text" id="FullName" name="FullName" />
+            <input hidden="hidden" value="0" class="teacher-id" type="text" id="TeacherId" name="TeacherId" />
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>Student List</legend>
+        <div id="students-container">
+            <div class="student-row">
+                <label for="FullName">Full Name</label>
+                <input type="text" class="student-fullname" name="students[0].FullName" />
+
+                <label for="DateOfBirth">Date of Birth</label>
+                <input type="date" class="student-dob" name="students[0].DateOfBirth" />
+            </div>
+        </div>
+    </fieldset>
+    <button type="button" class="add-student-button">Add Student</button>
+</div>
+
+<form id="teacher-form">
+    @if (Model != null && Model.Count > 0)
+    {
+        foreach (var item in Model)
+        {
+            <div class="form-detail">
+                <fieldset>
+                    <legend>Teacher Info:</legend>
+                    <div id="teacher-container">
+                        <label for="FullName">Full Name</label>
+                        <input value="@item.FullName" class="teacher-fullname" type="text" id="FullName" name="FullName" />
+                        <input hidden="hidden" value="@item.TeacherId" class="teacher-id" type="text" id="TeacherId" name="TeacherId" />
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Student List</legend>
+                    <div id="students-container">
+                        @if (item.Students != null && item.Students.Count > 0)
+                        {
+                            int idx = 0;
+                            foreach (var student in item.Students)
+                            {
+                                <div class="student-row">
+                                    <label for="FullName">Full Name</label>
+                                    <input value="@student.FullName" type="text" class="student-fullname" name="students[@idx].FullName" />
+                                    <label for="DateOfBirth">Date of Birth</label>
+                                    <input value="@(String.Format("{0:yyyy-MM-dd}", student.DateOfBirth))" type="date" class="student-dob" name="students[@idx].DateOfBirth" />
+                                    <input value="@student.StudentId" type="text" class="student-id" name="students[@idx].StudentId" />
+                                </div>
+
+                                idx++;
+                            }
+                        }
+                        else
+                        {
+                            <div class="student-row">
+                                <label for="FullName">Full Name</label>
+                                <input type="text" class="student-fullname" name="students[0].FullName" />
+                                <label for="DateOfBirth">Date of Birth</label>
+                                <input type="date" class="student-dob" name="students[0].DateOfBirth" />
+                                <input value="0" type="text" class="student-id" name="students[0].StudentId" />
+                            </div>
+                        }
+                    </div>
+                </fieldset>
+                <button type="button" class="add-student-button">Add Student</button>
+            </div>
+        }
+    }
+
+    <button type="button" id="add-teacher-button">Add Teacher</button>
+    <button class="btn-submit" type="submit">Submit</button>
+</form>
+
+<div class="message">
+    <diV style="display:none" class="info">Info message</diV>
+    <diV style="display:none" class="success">Successful operation message</diV>
+    <diV style="display:none" class="warning">Warning message</diV>
+    <diV style="display:none" class="error">Error message</diV>
+    <diV style="display:none" class="validation">Validation message 1<br>Validation message 2</diV>
+</div>

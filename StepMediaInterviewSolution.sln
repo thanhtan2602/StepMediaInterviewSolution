@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32929.386
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StepMedia.Data", "StepMedia.Data\StepMedia.Data.csproj", "{4B4DFA17-4EE8-4562-A20F-21858F19A1FD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EE2CC213-3F11-42F4-804A-F4858F6FDAC9}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StepMedia.WebApp", "StepMedia.WebApp\StepMedia.WebApp.csproj", "{E51E43A8-370D-41F2-AE26-10EE4E5ECD2C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StepMedian.UnitTest", "StepMedian.UnitTest\StepMedian.UnitTest.csproj", "{77742D2A-E63C-40C5-8C17-6995146C5AAF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StepMedia.BackendService", "StepMedia.BackendService\StepMedia.BackendService.csproj", "{57730736-20C9-43C6-BA42-26D438A4837A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StepMedia.Model", "StepMedia.Model\StepMedia.Model.csproj", "{D281861A-3C4D-446B-95DA-FF1FD88F1BA9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4B4DFA17-4EE8-4562-A20F-21858F19A1FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B4DFA17-4EE8-4562-A20F-21858F19A1FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B4DFA17-4EE8-4562-A20F-21858F19A1FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B4DFA17-4EE8-4562-A20F-21858F19A1FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E51E43A8-370D-41F2-AE26-10EE4E5ECD2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E51E43A8-370D-41F2-AE26-10EE4E5ECD2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E51E43A8-370D-41F2-AE26-10EE4E5ECD2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E51E43A8-370D-41F2-AE26-10EE4E5ECD2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77742D2A-E63C-40C5-8C17-6995146C5AAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77742D2A-E63C-40C5-8C17-6995146C5AAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77742D2A-E63C-40C5-8C17-6995146C5AAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77742D2A-E63C-40C5-8C17-6995146C5AAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57730736-20C9-43C6-BA42-26D438A4837A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57730736-20C9-43C6-BA42-26D438A4837A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57730736-20C9-43C6-BA42-26D438A4837A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57730736-20C9-43C6-BA42-26D438A4837A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D281861A-3C4D-446B-95DA-FF1FD88F1BA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D281861A-3C4D-446B-95DA-FF1FD88F1BA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D281861A-3C4D-446B-95DA-FF1FD88F1BA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D281861A-3C4D-446B-95DA-FF1FD88F1BA9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6A9D8DBD-EAFA-4493-A0FA-4DE2BAE35C7F}
+	EndGlobalSection
+EndGlobal
