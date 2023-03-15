@@ -15,7 +15,6 @@ namespace StepMedia.WebApp.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly StepMediaDbContext _dbContext;
-
         private readonly ITeacherService _teacherSvc;
 
         public HomeController(

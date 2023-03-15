@@ -9,7 +9,7 @@ namespace StepMedia.BackendService.Interfaces
 {
     public interface ITeacherService
     {
-        Task<List<TeacherViewModel>> GetTeacherList();
+        Task<List<TeacherViewModel>> GetTeacherList(int pageIndex = 0, int pageSize = 5);
         Task<int> InsertTeacher(TeacherViewModel teacher);
         Task<int> UpdateTeacher(TeacherViewModel teacher);
     }

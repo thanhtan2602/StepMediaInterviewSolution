@@ -19,12 +19,14 @@ namespace StepMedia.BackendService
         {
             _dbContext = dbContext;
         }
-        public async Task<List<TeacherViewModel>> GetTeacherList()
+        public async Task<List<TeacherViewModel>> GetTeacherList(int pageIndex = 0, int pageSize = 5)
         {
             var query = from p in _dbContext.Teachers
                         select new { p };
 
             var model = await query
+                .Skip((pageIndex) * pageSize)
+                .Take(pageSize)
                 .OrderBy(x => x.p.FullName)
                 .Select(x => new TeacherViewModel()
                 {
